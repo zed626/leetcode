@@ -1,4 +1,4 @@
-package leetconde121;
+package leetcode121;
 
 
 class NumArray {

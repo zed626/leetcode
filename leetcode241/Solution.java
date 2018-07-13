@@ -1,6 +1,7 @@
-package leetconde215;
+package leetcode241;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class Solution {
     public List<Integer> diffWaysToCompute(String input) {
@@ -39,7 +40,7 @@ class Solution {
 				}
         	}
         }
-        if(list.size()=0) return Integer.parseInt(input);
+        if(list.isEmpty()) list.add(Integer.parseInt(input));
         return list;
     }
 }

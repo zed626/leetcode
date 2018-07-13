@@ -1,4 +1,4 @@
-package leetconde148;
+package leetcode148;
 
 public class ListNode{
     int val;

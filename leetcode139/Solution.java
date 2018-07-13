@@ -1,4 +1,4 @@
-package leetconde139;
+package leetcode139;
 
 import java.util.List;
 

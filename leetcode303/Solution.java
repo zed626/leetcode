@@ -1,4 +1,4 @@
-package leetconde303;
+package leetcode303;
 
 
 class Solution {

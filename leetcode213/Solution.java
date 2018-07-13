@@ -1,4 +1,4 @@
-package leetconde213;
+package leetcode213;
 
 /**
  * Definition for singly-linked list.
