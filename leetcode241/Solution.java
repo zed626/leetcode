@@ -12,7 +12,7 @@ class Solution {
         for(int i =0;i<input.length();i++) {
         	char x = input.charAt(i);
         	if(x=='+'||x=='-'||x=='*') {
-				list2 = diffWaysToCompute(input.substring(0,i-1));
+				list2 = diffWaysToCompute(input.substring(0,i));
 				list3 = diffWaysToCompute(input.substring(i+1));
         		switch (x) {
 				case '+':
