@@ -21,3 +21,28 @@ class Solution {
         return count[nums.length-1];
     }
 }
+
+
+/* class Solution {
+    public int rob(int[] nums) {
+        int [] key = new int[nums.length];
+        for(int i=0;i<key.length;i++){
+            key[i] = -1;
+        }
+        return solve(nums.length-1,nums,key);
+    }
+    
+    public int solve(int index,int [] nums,int [] key){
+        if(index<0){
+            return 0;
+        }
+        else if(key[index]!=-1){
+            return key[index];
+        }
+        else{
+            key[index] = Math.max(nums[index]+solve(index-2,nums,key),solve(index-1,nums,key));
+            return key[index];
+            
+        }
+    }
+} */
