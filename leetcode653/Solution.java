@@ -10,40 +10,54 @@ package leetcode653;
  * }
  */
 class Solution {
-	int target;
-    public int findSecondMinimumValue(TreeNode root) {
-    	target =-1;
-        reverse(root);
-        return target;
+    public boolean findTarget(TreeNode root, int k) {
+        if (root == null) {
+            return false;
+        }
+        TreeNode start = root;
+        TreeNode end = root;
+        while (start.left != null) {
+            start = start.left;
+        }
+        while (end.right != null) {
+            end = end.right;
+        }
+        while (start != end) {
+            int sum = start.val + end.val;
+            if (sum > k) {
+                end = findPredecessor(root, end);
+            } else if (sum < k) {
+                start = findSuccessor(root, start);
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
-    
-    public void reverse(TreeNode root) {
-    	if(root.left==null) return ;
-    	if(root.left.val==root.right.val) {
-    		reverse(root.left);
-    		reverse(root.right);
-    	}
-    	else if(root.left.val>root.right.val) {
-    		if(target>root.left.val || target==-1)
-    		target=root.left.val;
-    		reverse(root.right);
-    	}
-    	else {
-    		if(target>root.right.val|| target==-1)
-    		target=root.right.val;
-    		reverse(root.left);
-    	}
-    	
+    private TreeNode findPredecessor(TreeNode root, TreeNode node) {
+        TreeNode pre = null;
+        TreeNode cur = root;
+        while (cur != null) {
+            if (cur.val < node.val) {
+                pre = cur;
+                cur = cur.right;
+            } else {
+                cur = cur.left;
+            }
+        }
+        return pre;
+    }
+    private TreeNode findSuccessor(TreeNode root, TreeNode node) {
+        TreeNode succ = null;
+        TreeNode cur = root;
+        while (cur != null) {
+            if (cur.val > node.val) {
+                succ = cur;
+                cur = cur.left;
+            } else {
+                cur = cur.right;
+            }
+        }
+        return succ;
     }
 }
-
-
-
-/*public int findSecondMinimumValue(TreeNode root) {
-    if(root.left == null) return -1;
-    
-    int l = root.left.val == root.val ? findSecondMinimumValue(root.left) : root.left.val;
-    int r = root.right.val == root.val ? findSecondMinimumValue(root.right) : root.right.val;
-    
-    return l == -1 || r == -1 ? Math.max(l, r) : Math.min(l, r);
-}*/
