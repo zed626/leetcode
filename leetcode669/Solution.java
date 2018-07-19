@@ -35,35 +35,24 @@ class Solution {
     		}
     		if(root==null) return null;
     	}
-    	TreeNode k=root;
-    	while(k.left!=null) {
-	    	if(k.left.val>=L) {
-	    			k=k.left;
-			}
-	    	else if(k.left.right!=null && k.left.right.val>=L) {
-	    		k.left=k.left.right;
-	    		k=k.left;
-	    	}
-	    	else {
-				k.left=null;
-				break;
-			}
-	    	
-    	}
-    	k=root;
-    	while(k.right!=null) {
-	    	if(k.right.val<=R) {
-	    			k=k.right;
-			}
-	    	else if(k.right.left!=null && k.left.right.val<=R) {
-	    		k.right=k.right.left;
-	    		k=k.right;
-	    	}
-	    	else {
-				k.right=null;
-				break;
-			}
-    	}
+        TreeNode dummy = root;
+        // Remove the invalid nodes from left subtree.
+        while (dummy != null) {
+            while (dummy.left != null && dummy.left.val < L) {
+                dummy.left = dummy.left.right; 
+                // If the left child is smaller than L, then we just keep the right subtree of it. 
+            }
+            dummy = dummy.left;
+        }
+        dummy = root;
+        // Remove the invalid nodes from right subtree
+        while (dummy != null) {
+            while (dummy.right != null && dummy.right.val > R) {
+                dummy.right = dummy.right.left;
+                // If the right child is biggrt than R, then we just keep the left subtree of it. 
+            }
+            dummy = dummy.right;
+        }
         return root;
     }
    
