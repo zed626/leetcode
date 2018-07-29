@@ -70,7 +70,7 @@ public class LRUCache {
         Node(){
             this(0, 0);
         }
-    }
+    };
     private int capacity, count;
     private Map<Integer, Node> map;
     private Node head, tail;
