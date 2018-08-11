@@ -52,7 +52,7 @@ class Solution {
 	         	if(map.containsKey(sum-k)){
 	         		op+=map.get(sum-k);
 	         	}
-	         	map.put(sum,map.getOrDefault(sum-k)+1);
+	         	map.put(sum,map.getOrDefault(sum, 0)+1);
 	         	
 	         }
 	         return op;
