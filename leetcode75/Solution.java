@@ -1,28 +1,25 @@
 package leetcode75;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
-    public void sortColors(int[] nums) {
-        if(nums==null || nums.length==0) return;
-        int i=0,j=nums.length-1;
-        while(i<j) {
-        	while(i<j&& nums[i]==0) i++;
-        	while(i<j && nums[j]!=0) j--;
-        	if(i<j) {
-        		int temp=nums[i];
-        		nums[i]=nums[j];
-        		nums[j]=temp;
-        	}
-        }
-        j=nums.length-1;
-        while(i<j) {
-        	while(i<j&& nums[i]==1) i++;
-        	while(i<j && nums[j]==2) j--;
-        	if(i<j) {
-        		int temp=nums[i];
-        		nums[i]=nums[j];
-        		nums[j]=temp;
-        	}
-        }
-        
+    public List<List<Integer>> subsets(int[] nums) {
+    	List<List<Integer>> lists=new ArrayList<>();
+        if(nums==null) return lists;
+        rcursive(nums, lists, new ArrayList<Integer>(), 0);
+        return lists;
+    }
+    
+    public void rcursive(int[]nums,List<List<Integer>> lists,List<Integer> list,int index) {
+    	if(index==nums.length) {
+    		List<Integer> newlist=new ArrayList<>(list);
+    		lists.add(newlist);
+    		return ;
+    	}
+		list.add(nums[index]);
+		rcursive(nums, lists, list, index+1);
+		list.remove(list.size()-1);	  
+		rcursive(nums, lists, list, index+1);
     }
 }
