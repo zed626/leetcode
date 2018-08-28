@@ -1,30 +1,13 @@
 package leetcode201;
 
 class Solution {
-    public int numIslands(char[][] grid) {
-        if(grid==null || grid.length==0) return 0;
-        int count=0;
-        for(int i=0;i<grid.length;i++) {
-        	for(int j=0;j<grid[0].length;j++) {
-        		if(grid[i][j]=='1') {
-        			DFSMaking(grid, i, j);
-        			count++;
-        		}
-        	}
+    public int rangeBitwiseAnd(int m, int n) {
+        int i=0;
+        while(m!=n) {
+        	m>>=1;
+        	n>>=1;
+        	i++;
         }
-        return count;
-    }
-    
-    public void DFSMaking(char[][] grid,int i,int j) {
-    	if(i<0||i>=grid.length||j<0||j>=grid[0].length) {
-    		return;
-    	}
-    	if(grid[i][j]=='0') return;
-    	grid[i][j]='0';
-	    DFSMaking(grid, i + 1, j);
-	    DFSMaking(grid, i - 1, j);
-	    DFSMaking(grid, i, j + 1);
-	    DFSMaking(grid, i, j - 1);
-    	
+        return m<<i;
     }
 }
