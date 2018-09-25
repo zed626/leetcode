@@ -1,5 +1,7 @@
 package leetcode173;
 
+import java.util.Stack;
+
 public class BSTIterator {
     private Stack<TreeNode> stack = new Stack<TreeNode>();
     
